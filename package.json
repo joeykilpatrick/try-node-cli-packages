@@ -1,6 +1,6 @@
 {
   "name": "try-node-cli-packages",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A demo of popular npm packages for CLI development.",
   "type": "module",
   "bin": {

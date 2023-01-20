@@ -3,6 +3,7 @@
 .vscode/**
 
 **/*.ts
+!packages/**/*.ts
 !**/*.js
 
 **/*.tgz

@@ -1,0 +1,41 @@
+{
+  "name": "try-node-cli-packages",
+  "version": "0.0.0",
+  "description": "A demo of popular npm packages for CLI development.",
+  "type": "module",
+  "bin": {
+    "try": "bin/try.js"
+  },
+  "scripts": {
+    "compile": "tsc",
+    "watch-compile": "nodemon --ext ts --watch \"**\" --exec \"npm run compile || exit 1\""
+  },
+  "author": "Joey Kilpatrick",
+  "license": "MIT",
+  "dependencies": {
+    "arg": "^5.0.2",
+    "boxen": "^7.0.1",
+    "chalk": "^5.2.0",
+    "commander": "^10.0.0",
+    "emphasize": "^6.0.0",
+    "meow": "^11.0.0",
+    "minimist": "^1.2.7",
+    "mri": "^1.2.0",
+    "sade": "^1.8.1",
+    "yargs": "^17.6.2"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "@types/yargs": "^17.0.20",
+    "nodemon": "^2.0.20",
+    "typescript": "^4.9.4"
+  },
+  "bugs": {
+    "url": "https://github.com/joeykilpatrick/try-node-cli-packages/issues"
+  },
+  "homepage": "https://github.com/joeykilpatrick/try-node-cli-packages#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joeykilpatrick/try-node-cli-packages.git"
+  }
+}

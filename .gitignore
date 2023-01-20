@@ -1,0 +1,8 @@
+# compiled output
+**/*.js
+
+# dependencies
+node_modules
+
+# IDEs and editors
+.idea

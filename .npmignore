@@ -1,0 +1,16 @@
+.github/**
+.idea/**
+.vscode/**
+
+**/*.ts
+!**/*.js
+
+**/*.tgz
+
+package-lock.json
+
+tsconfig.json
+tsconfig.tsbuildinfo
+
+build
+dist

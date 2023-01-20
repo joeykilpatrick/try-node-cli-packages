@@ -1,0 +1,46 @@
+name: release
+on:
+  push:
+    branches:
+      - master
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure registry
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.13.1
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Compile code
+        run: npm run compile
+
+      - name: Publish package
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+        run: |
+          echo Local version is: $(npm pkg get version)
+          echo Published version is:  "\"$( npm view try-node-cli-packages version )\""
+          
+          if [[ $( npm pkg get version ) != "\"$( npm view try-node-cli-packages version )\"" ]]
+          then
+            echo Publishing
+            npm publish
+          else
+            echo Not Publishing
+          fi

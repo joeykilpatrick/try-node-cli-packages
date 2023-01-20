@@ -1,2 +1,2 @@
 #!/usr/bin/env node
-require('./cdk.js');
+import '../index.js';

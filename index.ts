@@ -1,8 +1,10 @@
+import { readFile, stat } from "node:fs/promises";
+import * as url from "node:url";
+import * as path from 'node:path';
+import { emphasize } from "emphasize";
 import meow from 'meow';
 import chalk from "chalk";
 import boxen from 'boxen';
-import { emphasize } from "emphasize";
-import { readFile, stat } from "node:fs/promises";
 
 const printError = (message: string) => console.error(chalk.red(message))
 
@@ -37,7 +39,7 @@ if (!npmPackage) {
     throw cli.showHelp(1);
 }
 
-const sourceFilePath = `./packages/${npmPackage}.ts`;
+const sourceFilePath = path.join(path.dirname(url.fileURLToPath(import.meta.url)), `./packages/${npmPackage}.ts`);
 
 // Check if implementation exists for this package
 const fileExists = await stat(sourceFilePath).catch(() => null);

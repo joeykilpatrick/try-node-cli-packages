@@ -7,6 +7,7 @@ const cli = meow(`
 
     Options
       --rainbow, -r  Include a rainbow
+      --kitten, -k   The name of your kitten (required)
 
     Examples
       $ meow unicorns --rainbow
@@ -18,17 +19,25 @@ const cli = meow(`
     flags: {
         rainbow: {
             type: 'boolean',
-            alias: 'r'
+            alias: 'r',
+        },
+        kitten: {
+            type: 'string',
+            alias: 'k',
+            isRequired: true,
         },
     },
 });
 
 const input: string[] = cli.input;
-const flags = cli.flags; // 👍 typed as { rainbow: boolean | undefined } & ...
+const rainbow = cli.flags.rainbow; // 👍 typed as boolean | undefined
+const kitten = cli.flags.kitten; // 👍 typed as string
 
 console.log({ input });
-console.log({ flags });
+console.log({ flags: cli.flags });
 
-// try meow --help
 // try meow --version
-// try meow unicorns --rainbow
+// try meow
+// try meow --help
+// try meow unicorns --kitten jellybean
+// try meow unicorns --kitten jellybean --rainbow

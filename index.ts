@@ -1,6 +1,5 @@
 import { readFile, stat } from "node:fs/promises";
-import * as url from "node:url";
-import * as path from 'node:path';
+import { URL } from "node:url";
 import { emphasize } from "emphasize";
 import meow from 'meow';
 import chalk from "chalk";
@@ -39,10 +38,10 @@ if (!npmPackage) {
     throw cli.showHelp(1);
 }
 
-const sourceFilePath = path.join(path.dirname(url.fileURLToPath(import.meta.url)), `./packages/${npmPackage}.ts`);
+const sourceFileUrl = new URL(`./packages/${npmPackage}.ts`, import.meta.url);
 
 // Check if implementation exists for this package
-const fileExists = await stat(sourceFilePath).catch(() => null);
+const fileExists = await stat(sourceFileUrl).catch(() => null);
 if (!fileExists) {
     printError(`Did not find package '${chalk.white(npmPackage)}' for this tool.`);
 
@@ -55,7 +54,7 @@ if (!fileExists) {
 
 // Print the source code with syntax highlighting
 if (!noCodeFlag) {
-    const sourceCode = await readFile(sourceFilePath);
+    const sourceCode = await readFile(sourceFileUrl);
     const emphasized = emphasize.highlight('typescript', sourceCode.toString()).value;
     console.log(chalk.bgBlack(boxen(emphasized, {padding: 1})));
     console.log()

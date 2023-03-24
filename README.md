@@ -1,10 +1,10 @@
-### try-node-cli-packages
+## try-node-cli-packages
 
 [![npm](https://img.shields.io/npm/v/try-node-cli-packages)](https://www.npmjs.com/package/try-node-cli-packages)
 
 A tool to demonstrate and test popular Node.js packages for CLI application development. Companion blog post [here](https://blog.kilpatrick.cloud/posts/node-cli-app-packages/).
 
-#### Usage
+### Usage
 
 Install globally,
 

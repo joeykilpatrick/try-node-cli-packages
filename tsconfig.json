@@ -10,7 +10,8 @@
     "esModuleInterop": true,
     "downlevelIteration": true,
     "target": "esnext",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "jsx": "react"
   },
   "exclude": [
     "node_modules"
